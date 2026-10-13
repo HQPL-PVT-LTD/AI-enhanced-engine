@@ -1,0 +1,847 @@
+{
+  "id": "7e258909-f548-4b8e-a8cd-3ee83549351f",
+  "revision": 0,
+  "last_node_id": 501,
+  "last_link_id": 747,
+  "nodes": [
+    {
+      "id": 480,
+      "type": "UNETLoader",
+      "pos": [
+        4847.708362502471,
+        1951.5853390643276
+      ],
+      "size": [
+        510,
+        90
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            722
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "qwen_image_2.1_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_image_2.1_bf16.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "qwen_image_2.1_bf16.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 481,
+      "type": "TextEncodeQwenImage21",
+      "pos": [
+        5477.708362502472,
+        1951.5853390643276
+      ],
+      "size": [
+        545.3824753355357,
+        580.9458030703286
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 696
+        },
+        {
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 732
+        },
+        {
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "images.image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 697
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            720
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            721
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "TextEncodeQwenImage21"
+      },
+      "widgets_values": [
+        "Enhance this image to high resolution while preserving the original composition, lighting, and atmosphere. Image can be illustration or real photo, keep the original input style.",
+        "",
+        1024
+      ],
+      "widgets_values_named": {
+        "prompt": "Enhance this image to high resolution while preserving the original composition, lighting, and atmosphere. Image can be illustration or real photo, keep the original input style.",
+        "negative_prompt": "",
+        "resolution": 1024
+      }
+    },
+    {
+      "id": 482,
+      "type": "CLIPLoader",
+      "pos": [
+        4847.708362502471,
+        2111.585339064328
+      ],
+      "size": [
+        510,
+        120
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            696
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "qwen3vl_8b_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_bf16.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3vl_8b_fp8_scaled.safetensors",
+        "qwen_image",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+        "type": "qwen_image",
+        "device": "default"
+      }
+    },
+    {
+      "id": 483,
+      "type": "VAELoader",
+      "pos": [
+        4857.5582635086685,
+        2255.113534381832
+      ],
+      "size": [
+        510,
+        70
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            697,
+            723
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "qwen_image_2.1_vae_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_image_2.1_vae_bf16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+      }
+    },
+    {
+      "id": 485,
+      "type": "EmptyLatentImage",
+      "pos": [
+        4915.910426974274,
+        2552.0063040062964
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 741
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 742
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            728
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 491,
+      "type": "VAEDecode",
+      "pos": [
+        6550.225428575576,
+        2105.483161207059
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 717
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 723
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            718
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 492,
+      "type": "KSampler",
+      "pos": [
+        6137.656117527725,
+        2038.1043870564754
+      ],
+      "size": [
+        270,
+        270
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 722
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 720
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 721
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 728
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            717
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        512027028801279,
+        "randomize",
+        25,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 512027028801279,
+        "control_after_generate": "randomize",
+        "steps": 25,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 493,
+      "type": "PreviewImage",
+      "pos": [
+        6870.27104559189,
+        1681.165201418382
+      ],
+      "size": [
+        1853.8222285924214,
+        1493.5827102209673
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 718
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 495,
+      "type": "LoadImage",
+      "pos": [
+        3726.2016004091697,
+        1861.4629525400167
+      ],
+      "size": [
+        282.798828125,
+        314
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            729,
+            732
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "chrome_MXaFdAdkaF.jpg",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "chrome_MXaFdAdkaF.jpg",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 496,
+      "type": "GetImageSize",
+      "pos": [
+        4076.097643931107,
+        2447.291922458719
+      ],
+      "size": [
+        140,
+        124.00000000000023
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 729
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            740,
+            744
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            743,
+            745
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.36.0",
+        "Node name for S&R": "GetImageSize"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 499,
+      "type": "MathExpression|pysssss",
+      "pos": [
+        4295.500023259196,
+        2631.0712588849883
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": 744
+        },
+        {
+          "name": "b",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": 745
+        },
+        {
+          "name": "c",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            742
+          ]
+        },
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.5"
+      },
+      "widgets_values": [
+        "b * min(4, sqrt((2048*2048)/(a*b)))"
+      ],
+      "widgets_values_named": {
+        "expression": "b * min(4, sqrt((2048*2048)/(a*b)))"
+      }
+    },
+    {
+      "id": 500,
+      "type": "MathExpression|pysssss",
+      "pos": [
+        4281.27438879267,
+        2305.5391525079062
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": 740
+        },
+        {
+          "name": "b",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": 743
+        },
+        {
+          "name": "c",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            741
+          ]
+        },
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.5"
+      },
+      "widgets_values": [
+        "a * min(4, sqrt((2048*2048)/(a*b)))"
+      ],
+      "widgets_values_named": {
+        "expression": "a * min(4, sqrt((2048*2048)/(a*b)))"
+      }
+    }
+  ],
+  "links": [
+    [
+      717,
+      492,
+      0,
+      491,
+      0,
+      "LATENT"
+    ],
+    [
+      718,
+      491,
+      0,
+      493,
+      0,
+      "IMAGE"
+    ],
+    [
+      720,
+      481,
+      0,
+      492,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      721,
+      481,
+      1,
+      492,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      722,
+      480,
+      0,
+      492,
+      0,
+      "MODEL"
+    ],
+    [
+      723,
+      483,
+      0,
+      491,
+      1,
+      "VAE"
+    ],
+    [
+      728,
+      485,
+      0,
+      492,
+      3,
+      "LATENT"
+    ],
+    [
+      729,
+      495,
+      0,
+      496,
+      0,
+      "IMAGE"
+    ],
+    [
+      740,
+      496,
+      0,
+      500,
+      0,
+      "INT"
+    ],
+    [
+      741,
+      500,
+      0,
+      485,
+      0,
+      "INT"
+    ],
+    [
+      742,
+      499,
+      0,
+      485,
+      1,
+      "INT"
+    ],
+    [
+      743,
+      496,
+      1,
+      500,
+      1,
+      "INT"
+    ],
+    [
+      744,
+      496,
+      0,
+      499,
+      0,
+      "INT"
+    ],
+    [
+      745,
+      496,
+      1,
+      499,
+      1,
+      "INT"
+    ],
+    [
+      696,
+      482,
+      0,
+      481,
+      0,
+      "CLIP"
+    ],
+    [
+      732,
+      495,
+      0,
+      481,
+      1,
+      "IMAGE"
+    ],
+    [
+      697,
+      483,
+      0,
+      481,
+      4,
+      "VAE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 42,
+      "title": "Models",
+      "bounding": [
+        4837.708362502471,
+        1841.5853390643274,
+        530,
+        590
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 43,
+      "title": "Image Size",
+      "bounding": [
+        4837.708362502471,
+        2461.585339064328,
+        530,
+        250
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 44,
+      "title": "Conditioning",
+      "bounding": [
+        5397.708362502472,
+        1841.5853390643274,
+        700,
+        860
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 45,
+      "title": "Upscale Math",
+      "bounding": [
+        4066.097643931107,
+        2235.5391525079062,
+        639.4023793280885,
+        605.5321063770821
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7627768444385828,
+      "offset": [
+        -2931.075867792025,
+        -1764.8270078153103
+      ]
+    },
+    "frontendVersion": "1.53.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

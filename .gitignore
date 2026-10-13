@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+
+# Generated output
+enhanced_images/
+upscaled_*.png
+
+# Model weights (large; regenerate/download, see README and tools/export_onnx.py)
+api/weights/
+api/models/
+models/
+*.pth
+*.onnx
+*.safetensors
+*.ckpt
+
+# Env / secrets / editor / OS
+.env
+.env.*
+.vscode/
+.idea/
+.DS_Store
